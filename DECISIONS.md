@@ -4,6 +4,22 @@ Every non-trivial choice made during development is recorded here with a date an
 
 ---
 
+## 2026-04-21 — v0 actual findings (Deepgram Nova-3 Multilingual)
+
+Hindi (`hi_in`): WER 0.215, CER 0.090, all 5 samples succeeded. The model code-switches into English for certain words (numbers, proper nouns, technical terms) even when the reference is pure Hindi — an interesting secondary finding for v2.
+
+Nepali (`ne_np`): WER 1.211, CER 0.508, all 5 samples "succeeded" (no API errors). The model does not return a language-not-supported error. Instead it silently maps Nepali phonemes to the nearest Hindi equivalents, producing fluent-sounding but semantically incorrect Hindi text. WER exceeds 1.0 because the model inserts extra words beyond substitutions and deletions. This silent failure mode is the central v0 finding.
+
+Interpretation: a production system relying on Deepgram for Nepali transcription would produce wrong output with no error signal. The technology has a coverage gap, and it does not communicate that gap to callers.
+
+---
+
+## 2026-04-21 — Why use mean WER across samples rather than corpus WER
+
+Per-sample WER is computed for each sample individually, then averaged. An alternative is corpus WER (total edit distance / total reference words across all samples). We use mean-per-sample because: (1) it weights each speaker equally regardless of utterance length, (2) it allows per-sample variance to feed into bootstrap CIs, and (3) it is the more common approach in recent STT benchmarks (see ESB leaderboard). For v0 with 5 samples this distinction is minor; it matters more at scale.
+
+---
+
 ## 2026-04-21 — Why uv over pip
 
 `uv` (from Astral) is a Rust-based Python package manager that replaces both `pip` and `virtualenv`. Chosen because: (1) dramatically faster installs due to parallel dependency resolution, (2) `uv sync` produces a reproducible environment from `pyproject.toml` + `uv.lock` without needing a separate `requirements.txt`, (3) `uv run` executes scripts inside the managed venv without manual activation — this matters for CI and for collaborators who don't want to think about venvs. The lockfile means two machines running `uv sync` get byte-for-byte identical environments, which is essential for a benchmark claiming reproducibility.

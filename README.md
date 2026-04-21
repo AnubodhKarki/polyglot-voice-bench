@@ -32,11 +32,32 @@ Results land in `results/`.
 
 ## v0 Results
 
-_To be filled in after the first real run._
+Deepgram Nova-3 Multilingual, FLEURS validation split, 5 samples per language.
+
+| Language | Samples | WER | 95% CI | CER |
+|----------|---------|-----|--------|-----|
+| Hindi (`hi_in`) | 5 | 0.215 | [0.148, 0.272] | 0.090 |
+| Nepali (`ne_np`) | 5 | **1.211** | [1.000, 1.422] | 0.508 |
+
+**Nepali sample (reference → hypothesis):**
+```
+REF: अन्तरिक्षमा उपग्रहले कल प्राप्त गर्छ र त्यसपछि यसलाई तुरुन्तै तल प्रतिबिम्ब गर्छ
+HYP: अंतरिक्षियाँ में उपग्रहले कल प्राप्त घर से रोह तेज पचीस यसलाई तुरंतेज तल प्रतिबिंब घर से
+```
 
 ## What this means
 
-_To be filled in after v0 findings are confirmed._
+Deepgram Nova-3 does not return an error on Nepali audio. It returns **fluent-looking garbage in Hindi script** — silently mapping Nepali phonemes to the nearest Hindi words it recognises. The WER exceeds 1.0 (theoretically capped at 1.0 for substitutions and deletions alone) because the model also *inserts* extra words not present in the reference.
+
+This is worse than an error. An error tells you the system failed. A confident wrong answer tells you nothing is wrong until you check the transcript against ground truth. A production system using Deepgram for Nepali would silently produce incorrect output with no signal that anything had gone wrong.
+
+Hindi performs reasonably (WER 0.215), with the model code-switching into English for some words ("forty", "major", "wheelchair") — a separate finding for v2.
+
+## Next: v1
+
+- Add Whisper Large v3 via Groq (free tier)
+- Run the same 10 samples through both providers
+- First side-by-side comparison: does Whisper handle Nepali better?
 
 ## Next: v1
 

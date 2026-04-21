@@ -1,0 +1,22 @@
+{
+  "provider": "deepgram",
+  "language": "ne_np",
+  "n_total": 5,
+  "n_succeeded": 5,
+  "n_errored": 0,
+  "errors": [],
+  "wer": 1.210952380952381,
+  "cer": 0.5075881969355522,
+  "wer_ci": {
+    "point": 1.210952380952381,
+    "lower": 1.0,
+    "upper": 1.4219047619047618,
+    "confidence": 0.95
+  },
+  "cer_ci": {
+    "point": 0.5075881969355522,
+    "lower": 0.39635620354488277,
+    "upper": 0.6307675312624277,
+    "confidence": 0.95
+  }
+}
