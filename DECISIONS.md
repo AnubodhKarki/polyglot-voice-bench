@@ -65,4 +65,11 @@ We use `transcription` (not `raw_transcription`) as the reference string because
 
 ## 2026-04-21 — Deepgram SDK version and Nova-3 parameters
 
-_To be filled in at Checkpoint 6 after fetching Deepgram docs._
+Verified against developers.deepgram.com and deepgram.com/pricing on 2026-04-21.
+- SDK: `deepgram-sdk==6.1.1` (already installed; no version change needed)
+- Model string: `"nova-3"`
+- Language parameter for multilingual mode: `language="multi"`
+- Nepali (ne / ne-NP): **not listed** as a supported language for any Nova model
+- Price: $0.0092 per minute (Nova-3, Pay As You Go tier)
+
+Nepali being unsupported is the expected and intended finding for v0. The provider will pass `language="multi"` regardless of the input language; Deepgram will attempt transcription and either return garbage, an empty transcript, or an error — all of which are valid findings to record verbatim.
