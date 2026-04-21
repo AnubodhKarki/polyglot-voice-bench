@@ -34,6 +34,14 @@ The entire thesis of this project is that voice AI has a coverage gap for South 
 
 ---
 
+## 2026-04-21 — Why datasets is pinned to <3.0 and audio decoded without librosa
+
+`datasets>=3.0` dropped support for dataset loading scripts; `google/fleurs` still uses one (`fleurs.py`). Pinned to `datasets>=2.14,<3.0` to keep loading-script support. When `google/fleurs` migrates to Parquet this pin can be removed.
+
+`datasets 2.x` auto-decodes the `Audio` feature using `librosa`. Since librosa was dropped (see below), we use `dataset.cast_column("audio", Audio(decode=False))` to get raw bytes/path, then decode with `soundfile` + `scipy.signal.resample_poly`. This avoids librosa entirely while giving us the same 16kHz mono float32 arrays.
+
+---
+
 ## 2026-04-21 — Why librosa was dropped from v0 and jiwer API version
 
 `librosa>=0.9` requires `numba`, which requires `llvmlite`, which requires `cmake` at build time — not available on this machine without a Homebrew install. Since v0 only needs basic audio loading and resampling (16kHz mono WAV), `soundfile` + `scipy.signal` are sufficient. `librosa` can be re-added in v4 if we need mel-spectrograms or more advanced audio analysis.
@@ -44,7 +52,14 @@ The entire thesis of this project is that voice AI has a coverage gap for South 
 
 ## 2026-04-21 — FLEURS dataset field names and language codes
 
-_To be filled in at Checkpoint 5 after fetching the dataset card._
+Verified against https://huggingface.co/datasets/google/fleurs on 2026-04-21.
+- Hindi code: `hi_in`, Nepali code: `ne_np`
+- Native sample rate: 16,000 Hz (no resampling needed)
+- Transcript field: `transcription` (Unicode-normalised by Google); raw form is `raw_transcription`
+- Audio field: `audio` dict with keys `array` (numpy float32), `sampling_rate`, `path`
+- Splits: `train`, `validation`, `test`; no HuggingFace auth required (CC-BY-4.0)
+
+We use `transcription` (not `raw_transcription`) as the reference string because it is the form Google normalised for evaluation. Using `raw_transcription` would introduce inconsistencies between samples. In v4 we will revisit Devanagari normalisation on top of this.
 
 ---
 
