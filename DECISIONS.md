@@ -28,6 +28,20 @@ The entire thesis of this project is that voice AI has a coverage gap for South 
 
 ---
 
+## 2026-04-21 — Why openai-whisper was dropped from v0 dependencies
+
+`openai-whisper` was originally included to use `whisper.normalizers.EnglishTextNormalizer`. It could not be installed on macOS x86_64 (Intel): newer versions pull in `numba` -> `llvmlite` which requires `cmake` at build time; older pinned versions have a broken `pkg_resources` build dependency with modern uv. Rather than introduce a system-level cmake install as a prerequisite, we replaced the dependency with a minimal `normalize_english()` function (lowercase + unicode NFC + punctuation strip) that is sufficient for v0 WER comparisons. The plan is to revisit proper normalization in v4 using `faster-whisper`, which ships pre-built wheels.
+
+---
+
+## 2026-04-21 — Why librosa was dropped from v0 and jiwer API version
+
+`librosa>=0.9` requires `numba`, which requires `llvmlite`, which requires `cmake` at build time — not available on this machine without a Homebrew install. Since v0 only needs basic audio loading and resampling (16kHz mono WAV), `soundfile` + `scipy.signal` are sufficient. `librosa` can be re-added in v4 if we need mel-spectrograms or more advanced audio analysis.
+
+`jiwer` was installed as v4.0.0 (the current release at time of writing). It removed `compute_measures` in favor of `process_words()` which returns a `WordOutput` dataclass, and `wer()` / `cer()` as standalone functions. The metrics module was updated to use the v4 API. All 8 tests pass.
+
+---
+
 ## 2026-04-21 — FLEURS dataset field names and language codes
 
 _To be filled in at Checkpoint 5 after fetching the dataset card._
