@@ -1,0 +1,25 @@
+{
+  "provider": "assemblyai",
+  "language": "en_us",
+  "n_total": 25,
+  "n_succeeded": 23,
+  "n_errored": 2,
+  "errors": [
+    "See Error message for details",
+    "See Error message for details"
+  ],
+  "wer": 0.22674204343279108,
+  "cer": 0.05393374400429583,
+  "wer_ci": {
+    "point": 0.22674204343279108,
+    "lower": 0.18829802506741242,
+    "upper": 0.27258218538308226,
+    "confidence": 0.95
+  },
+  "cer_ci": {
+    "point": 0.05393374400429583,
+    "lower": 0.04134079321639369,
+    "upper": 0.06682523151618204,
+    "confidence": 0.95
+  }
+}

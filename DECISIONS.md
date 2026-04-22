@@ -102,6 +102,18 @@ Interpretation: the v1 headline is a split verdict — Deepgram wins on Hindi, W
 
 ---
 
+## 2026-04-22 — v2 actual findings (3-provider × 3-language, n=25)
+
+English (en_us): Deepgram WER 0.086 / CER 0.037 — clear best. AssemblyAI WER 0.227 / CER 0.054 (23/25 succeeded, 2 errors). Whisper WER 0.234 / CER 0.058. AssemblyAI and Whisper are essentially tied on English; Deepgram is 2.6× better than either.
+
+Hindi (hi_in): Deepgram WER 0.165 / CER 0.083 — clear best. Whisper WER 0.286 / CER 0.082. AssemblyAI WER 1.008 / CER 0.981 — catastrophic silent failure. CI [1.001, 1.019] is extraordinarily tight, indicating a consistent systematic failure across all 25 samples, not noise. The model produced English-looking output for Hindi audio without raising any error.
+
+Nepali (ne_np): All three providers fail (WER > 0.96). Whisper is least bad at WER 0.963 / CER 0.311. Deepgram WER 1.084 / CER 0.416. AssemblyAI WER 1.045 / CER 0.989 — same near-total CER failure pattern as Hindi.
+
+The v2 central finding: every provider has at least one silent failure mode on South Asian languages. Deepgram fails on Nepali. AssemblyAI Universal-3 Pro fails on both Hindi and Nepali — its 6 supported languages appear to be European only. Only Whisper produces non-degenerate (WER < 1.0) output across all three languages, though still poor on Nepali. No provider surfaces a language-not-supported error for any of these cases.
+
+---
+
 ## 2026-04-22 — v2 scope: FLEURS English is en_us only; accent variants deferred
 
 The v2 spec listed FLEURS en_us, en_in, en_au. FLEURS (google/fleurs) has 102 language codes; English appears only as en_us (US English). There is no en_in or en_au subset. Indian English and Australian English accent variants require a different dataset — Mozilla Common Voice has self-reported accent metadata for English. This is deferred to v3 where the self-collected dataset and Common Voice accent slices will be introduced together.

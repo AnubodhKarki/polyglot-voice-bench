@@ -62,12 +62,12 @@ class AssemblyAIUniversal3ProProvider(TranscriptionProvider):
 
         client = StreamingClient(StreamingClientOptions(api_key=self._api_key))
 
-        def on_turn(c, event: TurnEvent) -> None:
+        def on_turn(_, event: TurnEvent) -> None:
             # Ignore partial turns (end_of_turn=False); only keep finalized turns.
             if event.end_of_turn and event.transcript:
                 final_turns.append(event.transcript)
 
-        def on_error(c, error: StreamingError) -> None:
+        def on_error(_, error: StreamingError) -> None:
             error_holder[0] = str(error)
 
         client.on(StreamingEvents.Turn, on_turn)

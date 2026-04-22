@@ -1,0 +1,22 @@
+{
+  "provider": "assemblyai",
+  "language": "hi_in",
+  "n_total": 25,
+  "n_succeeded": 25,
+  "n_errored": 0,
+  "errors": [],
+  "wer": 1.0083828364740746,
+  "cer": 0.9812546426475085,
+  "wer_ci": {
+    "point": 1.0083828364740746,
+    "lower": 1.0011428571428571,
+    "upper": 1.0194259287770617,
+    "confidence": 0.95
+  },
+  "cer_ci": {
+    "point": 0.9812546426475085,
+    "lower": 0.9664328638823071,
+    "upper": 0.9943421719578965,
+    "confidence": 0.95
+  }
+}

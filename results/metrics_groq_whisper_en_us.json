@@ -1,0 +1,22 @@
+{
+  "provider": "groq_whisper",
+  "language": "en_us",
+  "n_total": 25,
+  "n_succeeded": 25,
+  "n_errored": 0,
+  "errors": [],
+  "wer": 0.23364535353173385,
+  "cer": 0.05753411300463019,
+  "wer_ci": {
+    "point": 0.23364535353173385,
+    "lower": 0.18764878872377208,
+    "upper": 0.27917417354971197,
+    "confidence": 0.95
+  },
+  "cer_ci": {
+    "point": 0.05753411300463019,
+    "lower": 0.04493098675422155,
+    "upper": 0.07178078877908273,
+    "confidence": 0.95
+  }
+}
