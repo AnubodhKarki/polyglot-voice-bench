@@ -102,6 +102,36 @@ Interpretation: the v1 headline is a split verdict — Deepgram wins on Hindi, W
 
 ---
 
+## 2026-04-22 — v2 scope: FLEURS English is en_us only; accent variants deferred
+
+The v2 spec listed FLEURS en_us, en_in, en_au. FLEURS (google/fleurs) has 102 language codes; English appears only as en_us (US English). There is no en_in or en_au subset. Indian English and Australian English accent variants require a different dataset — Mozilla Common Voice has self-reported accent metadata for English. This is deferred to v3 where the self-collected dataset and Common Voice accent slices will be introduced together.
+
+---
+
+## 2026-04-22 — AssemblyAI Universal-3 Pro: streaming architecture for pre-recorded files
+
+Universal-3 Pro (`u3-rt-pro`) is a streaming-only model (WebSocket). It does not have a batch/async file endpoint. To benchmark it on pre-recorded FLEURS audio, we stream the audio file in 100ms PCM chunks at 1× real-time speed via `StreamingClient.stream(bytes)`.
+
+The 1× real-time throttle is required because AssemblyAI's server enforces error 4029 ("Client sent audio too fast") when audio arrives faster than real-time. Consequence: each ~12s FLEURS sample takes ~12s to stream, so AssemblyAI calls are significantly slower than Deepgram (file upload, ~1s) and Groq Whisper (file upload, ~2s). This is an inherent property of the streaming-only API, not a benchmark artifact.
+
+The latency reported for AssemblyAI therefore includes streaming time, not just inference time — it is not comparable to the other providers' latency figures. Metrics in the results table are WER/CER only; latency is stored in the per-sample JSON for reference.
+
+`disconnect(terminate=True)` sends a `TerminateSession` WebSocket message and then blocks until the server responds with a `TerminationEvent`. This guarantees all in-flight turns are finalized before we collect transcripts.
+
+---
+
+## 2026-04-22 — AssemblyAI Universal-3 Pro: no language hint
+
+`StreamingParameters` has no `language` field. Language is detected automatically when `language_detection=True`. This is a methodological asymmetry: Groq Whisper gets an explicit language hint, Deepgram uses `language="multi"`, and AssemblyAI auto-detects. All three are running under their recommended/available production configuration. The asymmetry is intentional and documented; correcting it would require either withholding hints from Whisper (making the benchmark unfair to Whisper) or misusing the AssemblyAI API.
+
+---
+
+## 2026-04-22 — v2 sample count: 25 instead of 100
+
+The spec targets ~100 samples per language. v2 uses 25 because: (1) AssemblyAI streams at 1× real-time — 100 samples × ~12s = ~20 minutes of wall time for one language, or ~60 minutes for three; (2) 25 samples gives ≥10× more statistical power than v0/v1's n=5, and bootstrap CIs at n=25 are tight enough to support directional claims. The runner is resumable; bumping to 100 is a one-line change once we have the time budget.
+
+---
+
 ## 2026-04-22 — Why Groq as the inference backend for Whisper Large v3
 
 Three options: (1) run Whisper locally via `openai-whisper` or `faster-whisper`, (2) OpenAI's hosted Whisper API, (3) Groq's hosted Whisper endpoint. Local was already ruled out in v0 (llvmlite/cmake dependency on this machine). OpenAI's Whisper API is $0.006/minute; Groq's is $0.111/hour ($0.00185/minute) — 3× cheaper for the same model checkpoint. Groq also reports sub-second latency for short clips, which matters when running 10 samples in sequence. Both expose the same OpenAI-compatible transcription endpoint; the Groq Python SDK is a thin wrapper around it. If Groq's service is unavailable, switching to OpenAI requires one constructor swap and a key change — no logic changes needed.

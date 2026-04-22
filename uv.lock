@@ -169,6 +169,22 @@ wheels = [
 ]
 
 [[package]]
+name = "assemblyai"
+version = "0.62.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "pydantic-settings", marker = "python_full_version >= '3.14'" },
+    { name = "typing-extensions" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6a/7d/0486d56b1bdb784f1fe92402792134604d57c600ea63b2936b37c65821f1/assemblyai-0.62.0.tar.gz", hash = "sha256:c96eb468c68fc3789a547ddd8690fca846f5466cf0cf0d67d520d4c8bf973ba3", size = 58148, upload-time = "2026-04-17T18:14:01.523Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bb/da/a12f17b9ee7b4a2ac99821c44dc15cdb5e8251e071bead1679a8e3c878aa/assemblyai-0.62.0-py3-none-any.whl", hash = "sha256:e2fdaf0cc189733eb308b659576c9f2443831018f83a3751be04e1c751f0c274", size = 54803, upload-time = "2026-04-17T18:14:00.429Z" },
+]
+
+[[package]]
 name = "attrs"
 version = "26.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1006,6 +1022,7 @@ name = "polyglot-voice-bench"
 version = "0.0.1"
 source = { editable = "." }
 dependencies = [
+    { name = "assemblyai" },
     { name = "datasets" },
     { name = "deepgram-sdk" },
     { name = "groq" },
@@ -1022,6 +1039,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "assemblyai", specifier = ">=0.62.0" },
     { name = "datasets", specifier = ">=2.14.0,<3.0.0" },
     { name = "deepgram-sdk", specifier = ">=3.0.0" },
     { name = "groq", specifier = ">=0.9.0" },
@@ -1309,6 +1327,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/10/92/7e0e1bd9ca3c68305db037560ca2876f89b2647deb2f8b6319005de37505/pydantic_core-2.46.3-pp311-pypy311_pp73-musllinux_1_1_armv7l.whl", hash = "sha256:e61ea8e9fff9606d09178f577ff8ccdd7206ff73d6552bcec18e1033c4254b85", size = 2315886, upload-time = "2026-04-20T14:44:04.826Z" },
     { url = "https://files.pythonhosted.org/packages/b8/d8/101655f27eaf3e44558ead736b2795d12500598beed4683f279396fa186e/pydantic_core-2.46.3-pp311-pypy311_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:b504bda01bafc69b6d3c7a0c7f039dcf60f47fab70e06fe23f57b5c75bdc82b8", size = 2360528, upload-time = "2026-04-20T14:40:47.431Z" },
     { url = "https://files.pythonhosted.org/packages/07/0f/1c34a74c8d07136f0d729ffe5e1fdab04fbdaa7684f61a92f92511a84a15/pydantic_core-2.46.3-pp311-pypy311_pp73-win_amd64.whl", hash = "sha256:b00b76f7142fc60c762ce579bd29c8fa44aaa56592dd3c54fab3928d0d4ca6ff", size = 2184144, upload-time = "2026-04-20T14:42:57Z" },
+]
+
+[[package]]
+name = "pydantic-settings"
+version = "2.14.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic", marker = "python_full_version >= '3.14'" },
+    { name = "python-dotenv", marker = "python_full_version >= '3.14'" },
+    { name = "typing-inspection", marker = "python_full_version >= '3.14'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/42/98/c8345dccdc31de4228c039a98f6467a941e39558da41c1744fbe29fa5666/pydantic_settings-2.14.0.tar.gz", hash = "sha256:24285fd4b0e0c06507dd9fdfd331ee23794305352aaec8fc4eb92d4047aeb67d", size = 235709, upload-time = "2026-04-20T13:37:40.293Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/01/dd/bebff3040138f00ae8a102d426b27349b9a49acc310fcae7f92112d867e3/pydantic_settings-2.14.0-py3-none-any.whl", hash = "sha256:fc8d5d692eb7092e43c8647c1c35a3ecd00e040fcf02ed86f4cb5458ca62182e", size = 60940, upload-time = "2026-04-20T13:37:38.586Z" },
 ]
 
 [[package]]
