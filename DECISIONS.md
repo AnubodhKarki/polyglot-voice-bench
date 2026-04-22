@@ -89,3 +89,25 @@ Verified against developers.deepgram.com and deepgram.com/pricing on 2026-04-21.
 - Price: $0.0092 per minute (Nova-3, Pay As You Go tier)
 
 Nepali being unsupported is the expected and intended finding for v0. The provider will pass `language="multi"` regardless of the input language; Deepgram will attempt transcription and either return garbage, an empty transcript, or an error — all of which are valid findings to record verbatim.
+
+---
+
+## 2026-04-22 — v1 actual findings (Deepgram Nova-3 vs Whisper Large v3 via Groq)
+
+Hindi (`hi_in`): Deepgram WER 0.215 / CER 0.090; Whisper WER 0.362 / CER 0.116. Deepgram leads by ~68% relative WER. The CI bands do not overlap (Deepgram [0.148–0.272] vs Whisper [0.244–0.479]) — but the upper bound of Deepgram's CI touches the lower bound of Whisper's, so n=5 is not enough to declare statistical significance. The direction is clear; the magnitude needs more samples.
+
+Nepali (`ne_np`): Deepgram WER 1.211 / CER 0.508; Whisper WER 1.012 / CER 0.352. Both are catastrophic (WER > 1.0 means insertions exceed reference length), but Whisper fails less badly — ~17% lower WER, ~31% lower CER. The WER CIs overlap substantially ([1.000–1.422] vs [0.733–1.213]), so the WER difference is within noise at n=5. The CER gap (0.508 vs 0.352) is more pronounced and the intervals barely touch, suggesting Whisper gets more characters right even when word boundaries are wrong — consistent with it having been trained on Devanagari script. Neither model should be used for Nepali in production.
+
+Interpretation: the v1 headline is a split verdict — Deepgram wins on Hindi, Whisper is less bad on Nepali. Increasing to n=50 in a future version will tighten the CIs and clarify whether the Hindi gap and Nepali ordering hold at scale.
+
+---
+
+## 2026-04-22 — Why Groq as the inference backend for Whisper Large v3
+
+Three options: (1) run Whisper locally via `openai-whisper` or `faster-whisper`, (2) OpenAI's hosted Whisper API, (3) Groq's hosted Whisper endpoint. Local was already ruled out in v0 (llvmlite/cmake dependency on this machine). OpenAI's Whisper API is $0.006/minute; Groq's is $0.111/hour ($0.00185/minute) — 3× cheaper for the same model checkpoint. Groq also reports sub-second latency for short clips, which matters when running 10 samples in sequence. Both expose the same OpenAI-compatible transcription endpoint; the Groq Python SDK is a thin wrapper around it. If Groq's service is unavailable, switching to OpenAI requires one constructor swap and a key change — no logic changes needed.
+
+---
+
+## 2026-04-22 — Why pass an explicit language hint to Whisper but not to Deepgram
+
+Deepgram Nova-3 Multilingual is called with `language="multi"` (auto-detect) because that is its documented multilingual mode — there is no per-language switch that improves accuracy. Whisper Large v3 is called with an explicit ISO-639-1 language code (`hi` for Hindi, `ne` for Nepali) because: (1) without a hint, Whisper's language-detection step consumes ~1 second and can misidentify languages with limited training data, (2) Whisper's Nepali training data is thin, so auto-detect may hallucinate English or Hindi, (3) giving Whisper the hint represents best-practice deployment — a real application that knows the user's language should pass it. This is a methodological asymmetry and is intentional: we are benchmarking each provider under its recommended production configuration, not under artificial parity.
