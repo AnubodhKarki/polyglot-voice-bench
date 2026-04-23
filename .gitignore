@@ -36,6 +36,9 @@ results/transcripts/
 *.flac
 *.m4a
 
+# Exception: own-voice dataset is a CC-BY release, not a cache
+!data/own_voice/audio/*.wav
+
 # Audio cache — regenerated from HuggingFace
 ~/.cache/sa-voice-bench/
 

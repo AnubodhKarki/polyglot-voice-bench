@@ -1,0 +1,121 @@
+filename,reference_text,language,speaker_id,license,category,code_switch_density
+ne_001.wav,आज मौसम राम्रो छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_002.wav,म सिड्नीमा बस्छु।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_003.wav,मेरो परिवार नेपालमा छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_004.wav,खाना खाने समय भयो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_005.wav,"बजार जाँदैछु, केही चाहियो?",ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_006.wav,हिजो राति धेरै पानी पर्यो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_007.wav,कार्यालयमा बैठक छ आज।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_008.wav,फोन गर्न सक्छौ?,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_009.wav,नेपाली खाना मलाई धेरै मन पर्छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_010.wav,विमानस्थलबाट अब हिँड्नु पर्छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_011.wav,ढोका बन्द गर्न भुलिस?,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_012.wav,काठमाडौंको ट्राफिक धेरै जाम हुन्छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_013.wav,पढाइ कस्तो चलेको छ?,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_014.wav,त्यो किताब मलाई दिनुस् न।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_015.wav,बिहान उठ्न गाह्रो भयो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_016.wav,आउँदो हप्ता नेपाल जान्छु।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_017.wav,दाल भात मेरो मनपर्ने खाना हो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_018.wav,डाक्टरकहाँ जान भ्याइएन।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_019.wav,मोबाइल चार्जमा लगाउन भुलेछु।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_020.wav,गाउँमा बिजुली आउन छोड्यो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_021.wav,उसले अंग्रेजी राम्रो बोल्छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_022.wav,"भोलि परीक्षा छ, तयारी गर्नु पर्छ।",ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_023.wav,मेरो साथीको विवाह अर्को महिना छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_024.wav,पहाडको दृश्य अद्भुत हुन्छ।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_025.wav,यो काम कहिलेसम्म सक्नु पर्छ?,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_026.wav,बच्चाहरू खेल्न गए।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_027.wav,अस्पतालमा धेरै बिरामी थिए।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_028.wav,पानी ल्याइदिनुस् न।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_029.wav,पसलमा के छ हेरौं।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+ne_030.wav,घर फर्कने बेला भयो।,ne_np,anubodh_karki,CC-BY-4.0,nepali,
+hi_en_001.wav,"Main kal office nahi jaunga, leave leni hai.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_002.wav,"Yeh project bahut bada hai, deadline next week hai.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_003.wav,Aaj meeting mein kya hua?,hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_004.wav,"Khana order karte hain, kaisa lagega?",hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_005.wav,Uski salary bahut kam hai.,hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_006.wav,"Train late ho gayi, traffic mein phans gaye.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_007.wav,Mujhe call karo jab pahuncho.,hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_008.wav,Yeh laptop slow chal raha hai.,hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_009.wav,Report submit ho gayi?,hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_010.wav,"Aaj gym nahi jaunga, thaka hua hoon.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,low
+hi_en_011.wav,"I was thinking we should plan a trip, but budget nahi hai.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_012.wav,"Yeh movie bahut boring thi, waste of time.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_013.wav,"Can you help me, mujhe samajh nahi aaya.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_014.wav,"Meeting reschedule karni padegi, I have a conflict.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_015.wav,"Subah se work from home kar raha hoon, feeling productive.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_016.wav,"Usse baat karo, vo expert hai is cheez mein.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_017.wav,"Let's grab coffee, chai bhi chalegi.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_018.wav,"Yeh assignment difficult hai, kuch hints doge?",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_019.wav,"I forgot to reply, sorry yaar.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_020.wav,"Quarter end hai, numbers ache nahi hain.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,medium
+hi_en_021.wav,"I've been feeling so stressed lately, kuch karo yaar.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_022.wav,"The presentation went well, log impress hue.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_023.wav,"Can we wrap up early today? Kuch kaam hai ghar pe.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_024.wav,"I'm craving something spicy, kuch milega?",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_025.wav,"She literally cancelled last minute, itna annoying hai.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_026.wav,"The system's down again, IT ko bulao.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_027.wav,"I don't have bandwidth for this, already overwhelmed hoon.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_028.wav,"He's been working on it since morning, almost done hai.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_029.wav,"Just ping me when you're ready, I'll join the call.",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+hi_en_030.wav,"We need to sync up, kab free ho tum?",hi_en,anubodh_karki,CC-BY-4.0,hinglish,high
+en_au_001.wav,I grew up in Kathmandu before moving to Sydney.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_002.wav,"My name is Anubodh, that's A-N-U-B-O-D-H.",en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_003.wav,The commute on the train takes about forty minutes.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_004.wav,I had a meeting with Priya and Raj this afternoon.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_005.wav,Could you repeat that? I didn't quite catch it.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_006.wav,We're planning a holiday to Queensland next summer.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_007.wav,The curry at that restaurant on King Street is excellent.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_008.wav,I've been in Australia for about three years now.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_009.wav,She works at the University of New South Wales.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_010.wav,The weather here is nothing like Pokhara.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_011.wav,I'll send you a message on WhatsApp later.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_012.wav,Deepgram and AssemblyAI both have interesting APIs.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_013.wav,The RBA kept interest rates on hold again.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_014.wav,My mum called from Nepal this morning.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_015.wav,We need to finalise the report by end of week.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_016.wav,The bushfire season starts earlier every year.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_017.wav,Have you tried the dumplings at Chinatown?,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_018.wav,I'm not sure if I pronounced that correctly.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_019.wav,The voice recognition doesn't always pick up my accent.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_020.wav,Can you please add Suresh Shrestha to the meeting invite?,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_021.wav,I studied computer science before switching to data.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_022.wav,The ferry to Manly is a nice way to spend a Sunday.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_023.wav,We should catch up properly it's been ages.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_024.wav,The onboarding process took longer than expected.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_025.wav,I appreciate the feedback and I'll work on it.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_026.wav,She asked me to spell my last name twice.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_027.wav,Himalayan food is quite different from Indian food.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_028.wav,The system flagged my name as unusual.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_029.wav,I've got a seven o'clock flight to Melbourne tomorrow.,en_au,anubodh_karki,CC-BY-4.0,english,
+en_au_030.wav,Building these tools is something I care deeply about.,en_au,anubodh_karki,CC-BY-4.0,english,
+ne_en_001.wav,आज मलाई office late गर्नु पर्यो।,ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_002.wav,"भोलि हाम्रो meeting छ, I'll be home late.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_003.wav,"यो project finish भएन, deadline tomorrow छ।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_004.wav,म Sydney आएको three years भयो।,ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_005.wav,खाना खाने plan के छ tonight?,ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_006.wav,"उसले message गरेको छ, reply गर्नु पर्यो।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_007.wav,"I was thinking अब Nepal जाऊँ, it's been too long.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_008.wav,"ठिक छ, let me check my calendar.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_009.wav,"The train was packed, भिड थियो धेरै।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_010.wav,"Computer crash भयो, all my work गयो।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_011.wav,"मेरो phone number save गर्नुस्, I'll text you.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_012.wav,"Budget tight छ, we need to be careful.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_013.wav,"उहाँलाई call गर्नुस् न, he'll explain better.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_014.wav,"I'm hungry, कुनै राम्रो restaurant थाहा छ?",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_015.wav,यो application fill गर्न help गरिदिनुस् न।,ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_016.wav,"Meeting cancel भयो, let's reschedule.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_017.wav,"मेरो sister is visiting next month, she's excited.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_018.wav,"WiFi slow छ, can you restart the router?",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_019.wav,"I finished the report, boss लाई पठाइदिएँ।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_020.wav,"घर फर्कन ढिलो भयो, sorry I missed your call.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_021.wav,"She doesn't understand Nepali, English मै बोल्नु पर्छ।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_022.wav,"Supermarket close भयो, we need to go early tomorrow.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_023.wav,"उसले job पाइहाल्यो, so happy for him.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_024.wav,"यो form अंग्रेजीमा छ, translate गरिदिनुस्।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_025.wav,"I'll send you the link, हेर्नुस् त।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_026.wav,"Doctor ले medicine दियो, three times daily लिनु पर्छ।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_027.wav,किन आएनौ? I waited for twenty minutes.,ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_028.wav,"Let's video call this weekend, I miss everyone.",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_029.wav,"यो word को meaning के हो, Google गर्छु।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,
+ne_en_030.wav,"I'm learning Nepali typing, अझ गाह्रो छ।",ne_en,anubodh_karki,CC-BY-4.0,ne_en_switch,

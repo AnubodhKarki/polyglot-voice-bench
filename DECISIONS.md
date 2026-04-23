@@ -153,3 +153,42 @@ Three options: (1) run Whisper locally via `openai-whisper` or `faster-whisper`,
 ## 2026-04-22 — Why pass an explicit language hint to Whisper but not to Deepgram
 
 Deepgram Nova-3 Multilingual is called with `language="multi"` (auto-detect) because that is its documented multilingual mode — there is no per-language switch that improves accuracy. Whisper Large v3 is called with an explicit ISO-639-1 language code (`hi` for Hindi, `ne` for Nepali) because: (1) without a hint, Whisper's language-detection step consumes ~1 second and can misidentify languages with limited training data, (2) Whisper's Nepali training data is thin, so auto-detect may hallucinate English or Hindi, (3) giving Whisper the hint represents best-practice deployment — a real application that knows the user's language should pass it. This is a methodological asymmetry and is intentional: we are benchmarking each provider under its recommended production configuration, not under artificial parity.
+
+---
+
+## 2026-04-23 — v3 language codes for non-standard categories
+
+v3 introduces four language categories, two of which have no standard IETF/ISO code:
+
+- `ne_np` — Nepali (existing, follows FLEURS convention)
+- `hi_en` — Hinglish (Hindi-English code-switching). No standard code exists. We use underscore-separated `hi_en` so that `language_code.split("_")[0]` → `"hi"` for the Groq Whisper provider, which requires an ISO-639-1 code. The manifest's `language` field uses `hi_en` as an internal label; it is not IETF BCP-47 compliant.
+- `en_au` — Australian English in own voice. Standard IETF BCP-47 tag. `en_au`.split("_")[0]` → `"en"` for Whisper.
+- `ne_en` — Nepali-English code-switching. Same convention as `hi_en`. `ne_en`.split("_")[0]` → `"ne"` for Whisper.
+
+For Deepgram, all categories receive `language="multi"` (unchanged). For AssemblyAI, all receive auto-detection (unchanged). The existing provider code requires no modification for v3.
+
+---
+
+## 2026-04-23 — v3 reference text encoding for code-switched utterances
+
+For Hinglish (`hi_en`): reference text is in Latin script throughout. This reflects how Hinglish is written in digital contexts (SMS, WhatsApp, Twitter). A provider that outputs Devanagari for a Hinglish utterance will score high WER; one that outputs romanized Hindi will score lower — this asymmetry is intentional and interesting.
+
+For Nepali-English code-switch (`ne_en`): reference text uses Devanagari for the Nepali portions and Latin for the English portions, matching natural written code-switching. WER computation is purely string-based (no script-aware tokenization), so a provider that outputs all-Latin or all-Devanagari will be penalized even if the phonetic content is correct. This is a known limitation documented here for the v4 mixed-script WER work.
+
+---
+
+## 2026-04-23 — v3 results directory separation
+
+v3 results are written to `results/v3/` rather than the top-level `results/`. This prevents collisions with FLEURS runs: both use `ne_np` as a language label, but the data sources, speakers, and sample distributions are different. Mixing them would make the cached transcript files unreliable. The runner's `output_dir` parameter makes this a one-line change per script.
+
+---
+
+## 2026-04-23 — Own-voice dataset pre-population strategy
+
+The `data/own_voice/manifest.csv` is committed before the recording session (2026-04-26). The 120 reference texts are fixed in advance. This is intentional: (1) the utterances can be reviewed and corrected before recording, (2) the dataset loader and `run_v3.py` can be tested before any audio exists (they skip missing files gracefully), (3) it creates a discipline for the recording session — each file has an exact name to produce. Audio files are added to git after recording since `data/own_voice/audio/*.wav` is whitelisted in `.gitignore`.
+
+---
+
+## 2026-04-23 — Why include a CC-BY own-voice dataset
+
+Public benchmark datasets for Nepali, Hinglish, and Nepali-English code-switching are scarce. FLEURS has no Hinglish or code-switch category. Mozilla Common Voice has Nepali but with no Hinglish or code-switch data. By releasing our own recordings under CC-BY 4.0, we: (1) give future researchers a reproducible test set for these categories, (2) make the benchmark results independently verifiable, (3) contribute a resource that did not exist before. The speaker is not anonymous — named attribution is intentional and matches the CC-BY license requirement.
