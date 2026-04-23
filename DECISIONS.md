@@ -156,6 +156,22 @@ Deepgram Nova-3 Multilingual is called with `language="multi"` (auto-detect) bec
 
 ---
 
+## 2026-04-23 — AssemblyAI model tiers: Universal-3 Pro vs Universal-2
+
+AssemblyAI has two production speech models with very different language coverage:
+
+- **Universal-3 Pro** (streaming, `u3-rt-pro`): 6 languages only — English, Spanish, German, French, Portuguese, Italian. This is what v2 benchmarked. The catastrophic WER on Hindi (1.008) and Nepali (1.045) is not a capability failure — it is a coverage failure. Universal-3 Pro does not support these languages and outputs romanized Latin text instead of raising an error.
+
+- **Universal-2** (batch REST API, `speech_model="universal"`): ~99 languages, explicitly including Hindi. Used via `aai.Transcriber` + `aai.TranscriptionConfig(speech_model=aai.SpeechModel.universal)`. This is the correct model for a Hindi benchmarking comparison.
+
+The v2 finding stands and is not retracted: a developer who reaches for AssemblyAI's streaming flagship (the natural choice for voice applications) and runs Hindi audio through it receives confident-looking output with WER > 1.0 and no error signal. The CI [1.001–1.019] confirms this is systematic, not noise. That is an API design problem — the coverage limit is not surfaced by the API.
+
+v2b adds a second layer: Universal-2 (batch) does support Hindi, meaning AssemblyAI can transcribe Hindi — but only if the developer knows to use their older, non-streaming model. The finding becomes: providers force a three-way trade-off between language breadth, model quality, and latency architecture. AssemblyAI currently cannot give you all three for South Asian languages. v2b makes this concrete by showing both results side by side in the same table.
+
+For languages not in Universal-2's supported list (Nepali), we pass `language_detection=True` rather than an explicit code, because that is what a production developer would do. The result — whether a correct transcript, garbage, or an error — is the finding.
+
+---
+
 ## 2026-04-23 — v3 language codes for non-standard categories
 
 v3 introduces four language categories, two of which have no standard IETF/ISO code:
