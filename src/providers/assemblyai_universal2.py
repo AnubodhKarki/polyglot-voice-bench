@@ -70,14 +70,14 @@ class AssemblyAIUniversal2Provider(TranscriptionProvider):
 
         if lang_code is not None:
             config = aai.TranscriptionConfig(
-                speech_model=aai.SpeechModel.universal,
+                speech_models=[aai.SpeechModel.universal],
                 language_code=lang_code,
             )
         else:
             # Unsupported language (e.g. Nepali) — let AssemblyAI auto-detect.
             # Language-not-supported error or silent failure is itself a finding.
             config = aai.TranscriptionConfig(
-                speech_model=aai.SpeechModel.universal,
+                speech_models=[aai.SpeechModel.universal],
                 language_detection=True,
             )
 

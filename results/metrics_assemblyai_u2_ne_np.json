@@ -1,0 +1,22 @@
+{
+  "provider": "assemblyai_u2",
+  "language": "ne_np",
+  "n_total": 25,
+  "n_succeeded": 25,
+  "n_errored": 0,
+  "errors": [],
+  "wer": 0.9895589541177776,
+  "cer": 0.2933332739318505,
+  "wer_ci": {
+    "point": 0.9895589541177776,
+    "lower": 0.8607185731751907,
+    "upper": 1.1067598410576354,
+    "confidence": 0.95
+  },
+  "cer_ci": {
+    "point": 0.2933332739318505,
+    "lower": 0.2528900095800468,
+    "upper": 0.3375640825764087,
+    "confidence": 0.95
+  }
+}

@@ -172,6 +172,24 @@ For languages not in Universal-2's supported list (Nepali), we pass `language_de
 
 ---
 
+## 2026-04-23 — v2b actual findings (AssemblyAI Universal-2 vs 3 providers, n=25)
+
+Hindi (`hi_in`): Deepgram WER 0.165 / CER 0.083. Universal-2 WER 0.200 / CER 0.050. Split verdict — Deepgram wins word-level accuracy, Universal-2 wins character-level accuracy. The CER CIs barely overlap (Deepgram [0.054–0.116], U2 [0.039–0.061]), suggesting the character-level gap is real. Interpretation: Universal-2 has better phoneme-to-Devanagari-character mapping but applies different word boundary rules than the FLEURS reference transcriptions. In Hindi, where compound words and sandhi rules create genuine segmentation ambiguity, this is an expected divergence.
+
+Nepali (`ne_np`): Universal-2 was called with `language_detection=True` (Nepali not in supported list). It auto-detected and returned CER 0.293 — nearly identical to Whisper (CER 0.311) and significantly better than Deepgram (CER 0.416). Both WER CIs overlap fully ([0.861–1.107] vs [0.828–1.093]), so the WER ordering is within noise. The CER ordering (U2 ≈ Whisper >> Deepgram) is more stable. U3-Pro CER (0.989) collapses completely — same wrong-script failure mode as Hindi.
+
+English (`en_us`): Universal-2 WER 0.243, U3-Pro WER 0.227, Whisper WER 0.234. All three are statistically indistinguishable (CIs fully overlap). Deepgram (WER 0.086) remains far ahead. Conclusion: U3-Pro's streaming capability is its only meaningful differentiator over U2 on English — not accuracy.
+
+Meta-finding: Universal-2 is as accurate as U3-Pro on English, better on Hindi (CER), and approximately equal to Whisper on Nepali. The streaming-only constraint of U3-Pro costs language coverage (6 languages) without buying measurable accuracy. A developer who needs South Asian language support from AssemblyAI must use the older batch model and accept the architectural trade-off.
+
+---
+
+## 2026-04-23 — AssemblyAI SDK: speech_model deprecated, use speech_models
+
+`TranscriptionConfig(speech_model=aai.SpeechModel.universal)` was rejected by the API with error "speech_model is deprecated. Use 'speech_models' instead." The fix is `speech_models=[aai.SpeechModel.universal]` (plural, list). The parameter appears in the SDK's `__init__` signature but is no longer accepted server-side. Documented here to catch the same mistake in v3/v3.5 if AssemblyAI batch is reused.
+
+---
+
 ## 2026-04-23 — v3 language codes for non-standard categories
 
 v3 introduces four language categories, two of which have no standard IETF/ISO code:
